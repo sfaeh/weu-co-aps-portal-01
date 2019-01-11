@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Request new Resource Group</title>
+
+    <style>
+        body {
+            background-color: whitesmoke;
+            color: dodgerblue;
+            font-family: Segoe UI;
+            font-size: 100%;
+        }
+
+        h1 {
+            color: dodgerblue;
+            font-family: 'Segoe UI';
+            font-size: 100%;
+        }
+
+        p {
+            color: dodgerblue;
+            font-family: Segoe UI;
+            font-size: 100%;
+        }
+
+        a {
+            color: dodgerblue;
+            font-family: Segoe UI;
+            font-size: 100%;
+        }
+
+        input {
+            color: gray;
+            font-family: Segoe UI;
+            font-size: 100%;
+        }
+
+        select {
+            color: gray;
+            font-family: Segoe UI;
+            font-size: 100%;
+        }
+
+        option {
+            color: grey;
+            font-family: Segoe UI;
+            font-size: 100%;
+        }
+
+        .tab1 {
+            position: absolute;
+            left: 350px;
+        }
+
+        .tab2 {
+            position: absolute;
+            left: 700px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dodgerblue;
+        }
+
+            .tooltip .tooltiptext {
+                visibility: hidden;
+                width: 400px;
+                font-family: 'Segoe UI';
+                font-size: 80%;
+                background-color: dodgerblue;
+                color: white;
+                text-align: left;
+                border-radius: 6px;
+                padding: 5px 5px;
+                /* Position the tooltip */
+                position: absolute;
+                z-index: 1;
+                top: -5px;
+                left: 105%;
+            }
+
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+            }
+
+        .column {
+            float: left;
+            width: 500px;
+            padding: 10px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .button {
+            background-color: dodgerblue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function UserAction() {
+            var form = document.getElementById('rgform');
+            var chdata = {};
+            chdata['Attribute01'] = form.elements.Region.value;
+            chdata['Attribute02'] = form.elements.Subscription.value;
+            chdata['Attribute03'] = form.elements.ResourceGroupName.value;
+            chdata['Attribute04'] = form.elements.ResourceGroupOwner.value;
+            chdata['Attribute05'] = form.elements.ApplicationId.value;
+            chdata['Attribute06'] = form.elements.CostCenter.value;
+            chdata['Attribute07'] = form.elements.Budget.value;
+            chdata['Attribute08'] = form.elements.Contact.value;
+            jdata = JSON.stringify(chdata);
+            //alert("JSON data: " + jdata);
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "https://s2events.azure-automation.net/webhooks?token=xpWODhmvcwo%2fFYdu1MK0ukfAjiPklMX5oFdZw2rTbn0%3d", true);
+            xhttp.setRequestHeader("Content-type", "text/plain"); // https://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request
+            xhttp.send(jdata);
+            alert('The request has been submitted. Upon completion, a mail will be sent to the Resource Group owner.');
+            window.close()
+            window.open("https://weu-co-aps-felportal-01.azurewebsites.net/");
+        }
+    </script>
+    <h1> 
+        <img src="SOL0011-ResourceGroupNew-Logo.png" width="80">   Request a new Resource Group<br />
+    </h1>
+    <hr />
+    <br>
+    <form id="rgform">
+        <div class="row">
+            <div class="column">
+
+                <span class="tooltip">Azure Region:<span class="tooltiptext">Regions to which the Resource Group is deployed.</span></span>
+                <select class="tab1" name="Region">
+                    <option value="West Europe">West Europe</option>
+                    <option value="North Europe">North Europe</option>
+                </select><br><br>
+ 
+                <span class="tooltip">Subscription:<span class="tooltiptext">Subscription to which the Resource Group is deployed.</span></span>
+                <select class="tab1" name="Subscription">
+                    <option value="Core-co">Core-co</option>
+                    <option value="Test-te">Test-te</option>
+                </select><br><br>
+
+                <span class="tooltip">Individual Part of Resource Group Name: <span class="tooltiptext">Individual part of the Resource Group name.</span></span>
+                <input id="ResourceGroupName" class="tab1" type="text" /><br><br>
+
+                <span class="tooltip">Owner (AD Group): <span class="tooltiptext">The owner of the Resource Group - used for access control.</span></span>
+                <select class="tab1" name="ResourceGroupOwner" >
+                    <option value="AzureNetwork-Contributor">AzureNetwork-Contributor</option>
+                    <option value="AzureCore-Contributor">AzureCore-Contributor</option>
+                    <option value="AzureSecurity-Contributor">AzureSecurity-Contributor</option>
+                    <option value="AzureReader-Reader">AzureReader-Reader</option>
+                </select><br><br>
+
+            </div>
+        </div>
+        <h1>
+            Tagging Information<br />
+        </h1>
+            <hr />
+        <div class="row">
+            <div class="column">
+                <span class="tooltip">Application Id: <span class="tooltiptext">Application ID for the core Resources deployed in this Subscription.</span></span>
+                <select class="tab1" name="ApplicationId">
+                    <option value="CoreServices">Core Services</option>
+                    <option value="App01">Application 01</option>
+                    <option value="App02">Application 02</option>
+                </select><br><br>
+
+                <span class="tooltip">Cost Center:<span class="tooltiptext">Cost Center to which the cost for the core Resources is charged.</span></span>
+                <select class="tab1" name="CostCenter">
+                    <option value="A99.2345.34-f">A99.2345.34-f</option>
+                    <option value="A99.2345.34-f">A99.8565.34-f</option>
+                    <option value="A99.2345.34-f">A99.8095.34-f</option>
+                    <option value="A99.2345.34-f">A99.1234.34-f</option>
+                </select><br><br>
+
+                <span class="tooltip">Budget: <span class="tooltiptext">Estimated monthly spending cost for the Resource Groups</span></span>
+                <input id="Budget" class="tab1" type="text" /><br><br>
+
+                <span class="tooltip">Resource Group Owner (User): <span class="tooltiptext">The owner of the Resource Group - used for tagging.</span></span>
+                <select class="tab1" name="Contact">
+                    <option value="felix.bodmer@outlook.com">felix.bodmer@outlook.com</option>
+                    <option value="contact1@customer.com">contact1@customer.com</option>
+                    <option value="contact2@customer.com">contact2@customer.com</option>
+                    <option value="contact3@customer.com">contact3@customer.com</option>
+                </select><br><br>
+
+            </div>
+        </div>
+        <hr />
+        <button class="button" type="submit" onclick="UserAction()">Submit Request</button> <br> <br> The 'Submit Request' button will send this data in JSON format to a WebHook in Azure Automation where the Runbook SOL0011-ResourceGroupNew is triggered
+</form>
+</body>
+</html>
