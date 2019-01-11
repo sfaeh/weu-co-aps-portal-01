@@ -135,7 +135,7 @@
             xhttp.send(jdata);
             alert('The request has been submitted. Upon completion, a mail will be sent to the Resource Group owner.');
             window.close()
-            window.open("https://weu-co-aps-felportal-01.azurewebsites.net/");
+            window.open("https://weu-co-aps-portal-01.azurewebsites.net/");
         }
     </script>
     <h1> 
@@ -150,25 +150,20 @@
                 <span class="tooltip">Azure Region:<span class="tooltiptext">Regions to which the Resource Group is deployed.</span></span>
                 <select class="tab1" name="Region">
                     <option value="West Europe">West Europe</option>
-                    <option value="North Europe">North Europe</option>
                 </select><br><br>
  
                 <span class="tooltip">Subscription:<span class="tooltiptext">Subscription to which the Resource Group is deployed.</span></span>
                 <select class="tab1" name="Subscription">
-                    <option value="Core-co">Core-co</option>
+                    <option value="prd-sub-co">prd-sub-co</option>
                     <option value="Test-te">Test-te</option>
                 </select><br><br>
 
                 <span class="tooltip">Individual Part of Resource Group Name: <span class="tooltiptext">Individual part of the Resource Group name.</span></span>
                 <input id="ResourceGroupName" class="tab1" type="text" /><br><br>
 
-                <span class="tooltip">Owner (AD Group): <span class="tooltiptext">The owner of the Resource Group - used for access control.</span></span>
-                <select class="tab1" name="ResourceGroupOwner" >
-                    <option value="AzureNetwork-Contributor">AzureNetwork-Contributor</option>
-                    <option value="AzureCore-Contributor">AzureCore-Contributor</option>
-                    <option value="AzureSecurity-Contributor">AzureSecurity-Contributor</option>
-                    <option value="AzureReader-Reader">AzureReader-Reader</option>
-                </select><br><br>
+				<span class="tooltip">Owner (AD Group): <span class="tooltiptext">The owner of the Resource Group - used for access control.</span></span>
+                <input id="ResourceGroupOwner" class="tab1" type="text" /><br><br>
+			
 
             </div>
         </div>
@@ -178,28 +173,21 @@
             <hr />
         <div class="row">
             <div class="column">
-                <span class="tooltip">Application Id: <span class="tooltiptext">Application ID for the core Resources deployed in this Subscription.</span></span>
-                <select class="tab1" name="ApplicationId">
-                    <option value="CoreServices">Core Services</option>
-                    <option value="App01">Application 01</option>
-                    <option value="App02">Application 02</option>
-                </select><br><br>
+                <span class="tooltip">Service: <span class="tooltiptext">Application ID for the core Resources deployed in this Subscription.</span></span>
+                <input id="ApplicationId" class="tab1" type="text" /><br><br>
 
-                <span class="tooltip">Cost Center:<span class="tooltiptext">Cost Center to which the cost for the core Resources is charged.</span></span>
+                <span class="tooltip">Standort:<span class="tooltiptext">Cost Center to which the cost for the core Resources is charged.</span></span>
                 <select class="tab1" name="CostCenter">
-                    <option value="A99.2345.34-f">A99.2345.34-f</option>
-                    <option value="A99.2345.34-f">A99.8565.34-f</option>
-                    <option value="A99.2345.34-f">A99.8095.34-f</option>
-                    <option value="A99.2345.34-f">A99.1234.34-f</option>
+                    <option value="WestEurope">WestEurope</option>
                 </select><br><br>
 
                 <span class="tooltip">Budget: <span class="tooltiptext">Estimated monthly spending cost for the Resource Groups</span></span>
                 <input id="Budget" class="tab1" type="text" /><br><br>
 
-                <span class="tooltip">Resource Group Owner (User): <span class="tooltiptext">The owner of the Resource Group - used for tagging.</span></span>
+                <span class="tooltip">Verantwortlich (User): <span class="tooltiptext">The owner of the Resource Group - used for tagging.</span></span>
                 <select class="tab1" name="Contact">
-                    <option value="felix.bodmer@outlook.com">felix.bodmer@outlook.com</option>
-                    <option value="contact1@customer.com">contact1@customer.com</option>
+                    <option value="stefan.faeh@phzh.ch">stefan.faeh@phzh.ch</option>
+                    <option value="stephen.kuenzle@phzh.ch">stephen.kuenzle@phzh.ch</option>
                     <option value="contact2@customer.com">contact2@customer.com</option>
                     <option value="contact3@customer.com">contact3@customer.com</option>
                 </select><br><br>
