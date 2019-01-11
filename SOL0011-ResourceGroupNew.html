@@ -162,7 +162,14 @@
                 <input id="ResourceGroupName" class="tab1" type="text" /><br><br>
 
 				<span class="tooltip">Owner (AD Group): <span class="tooltiptext">The owner of the Resource Group - used for access control.</span></span>
-                <input id="ResourceGroupOwner" class="tab1" type="text" /><br><br>
+                <select class="tab1" name="ResourceGroupOwner" >
+                    <option value="AzureNetwork-Contributor">AzureNetwork-Contributor</option>
+                    <option value="AzureCore-Contributor">AzureCore-Contributor</option>
+                    <option value="AzureSecurity-Contributor">AzureSecurity-Contributor</option>
+                    <option value="AzureReader-Reader">AzureReader-Reader</option>
+                </select><br><br>
+			
+			
 			
 
             </div>
