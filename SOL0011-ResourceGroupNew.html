@@ -130,7 +130,8 @@
             //alert("JSON data: " + jdata);
 
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "https://s2events.azure-automation.net/webhooks?token=xpWODhmvcwo%2fFYdu1MK0ukfAjiPklMX5oFdZw2rTbn0%3d", true);
+            xhttp.open("POST", "https://s2events.azure-automation.net/webhooks?token=ReVvoc9fm2d8VJiNWOBeg9E4B23QKO0tWZ91hVZLleI%3d", true);
+	    // xhttp.open("POST", "https://s2events.azure-automation.net/webhooks?token=xpWODhmvcwo%2fFYdu1MK0ukfAjiPklMX5oFdZw2rTbn0%3d", true);
             xhttp.setRequestHeader("Content-type", "text/plain"); // https://stackoverflow.com/questions/1256593/why-am-i-getting-an-options-request-instead-of-a-get-request
             xhttp.send(jdata);
             alert('The request has been submitted. Upon completion, a mail will be sent to the Resource Group owner.');
